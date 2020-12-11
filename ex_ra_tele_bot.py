@@ -19,6 +19,11 @@ def send_welcome(message: telebot.types.Message):
     bot.reply_to(message, help_message())
 
 
+@bot.message_handler(commands=['values', ])
+def send_welcome(message: telebot.types.Message):
+    bot.reply_to(message, 'Список поддерживаемых валют: ' + str(list(currencys_designations.keys())))
+
+
 @bot.message_handler(content_types=['text', ])
 def convert_currency(message: telebot.types.Message):
     try:
